@@ -1,7 +1,9 @@
 
+
 export const DEFAULT_TYPES_USER_DATA = {
 	CHANGE_USER_TOKEN: 'change_token'
 }
+export const TOKEN = 'a5a521b33a5715398b6e7a4e90e4a3a8'
 
 export const DEFAULT_TYPES_SORT = {
 	POPULARITY: 'По полярности',

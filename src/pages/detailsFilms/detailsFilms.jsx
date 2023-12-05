@@ -16,7 +16,6 @@ import IconFavorites from '../../components/iconFavorites/iconFavorites'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchFavoriteFilmsAdd } from '../../store/filmsSlices'
 
-
 export async function loader({ params }) {
 	const filmsId = params.filmId.substring(1)
 	const film = await requestsGetDetailsFilms(filmsId)
@@ -24,7 +23,7 @@ export async function loader({ params }) {
 }
 
 const DetailsFilms = () => {
-	const favoriteFilms = useSelector((state) => state.films.favoriteFilms)
+	const favoriteFilms = useSelector(state => state.films.favoriteFilms)
 	const dispatch = useDispatch()
 
 	const film = useLoaderData()
@@ -40,11 +39,10 @@ const DetailsFilms = () => {
 	const [isFavoriteFilms, setIsFavoriteFilms] = useState(false)
 
 	useEffect(() => {
-
 		async function getFavoriteFilms() {
-			if(favoriteFilms.results.some(movie => movie.id === film.id)){
+			if (favoriteFilms.results.some(movie => movie.id === film.id)) {
 				setIsFavoriteFilms(true)
-			}else{
+			} else {
 				setIsFavoriteFilms(false)
 			}
 		}
@@ -92,7 +90,6 @@ const DetailsFilms = () => {
 								<ArrowBackIcon></ArrowBackIcon>
 							</Link>
 						</CardContent>
-
 						<CardContent>
 							<Typography variant='h6'>{film.overview}</Typography>
 						</CardContent>

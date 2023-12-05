@@ -6,11 +6,13 @@ import SendIcon from '@mui/icons-material/Send'
 import TokenIcon from '@mui/icons-material/Token'
 import { useCookies } from 'react-cookie'
 import InputForm from '../inputForm/inputForm'
-import {
-	COOKIES,
-} from '../../defaultValue/defaultValue'
+import { COOKIES } from '../../defaultValue/defaultValue'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeStatusReg, changeToken, fetchAccountId } from '../../store/userSlices'
+import {
+	changeStatusReg,
+	changeToken,
+	fetchAccountId
+} from '../../store/userSlices'
 import FetchError from '../../error/fetchError'
 
 const ModalRegistration = ({ titleRegistration }) => {
@@ -19,24 +21,21 @@ const ModalRegistration = ({ titleRegistration }) => {
 	const [emailValue, setEmailValue] = useState('')
 	const [emailPassword, setPasswordValue] = useState('')
 	const [tokenValue, setTokenValue] = useState('')
-	const accountIdStatus = useSelector((state) => state.users.status)
+	const accountIdStatus = useSelector(state => state.users.status)
 
 	function saveTokenCookie(token) {
 		setCookie(COOKIES.TOKEN, token, { path: '/' })
 	}
 
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(fetchAccountId())
-	},[])
+	}, [])
 
-
-	if(accountIdStatus === 'error'){
-		return(
-			<FetchError></FetchError>
-		)
+	if (accountIdStatus === 'error') {
+		return <FetchError></FetchError>
 	}
-	if(accountIdStatus === 'resolved'){
-		return(
+	if (accountIdStatus === 'resolved') {
+		return (
 			<Box
 				sx={{
 					width: 550,
@@ -52,7 +51,11 @@ const ModalRegistration = ({ titleRegistration }) => {
 				}}
 			>
 				<Box
-					sx={{ height: '470px', background: '#eee', borderRadius: '60% / 10%' }}
+					sx={{
+						height: '470px',
+						background: '#eee',
+						borderRadius: '60% / 10%'
+					}}
 				>
 					<FormControl
 						sx={{ display: 'flex', justifyContent: 'spaceBetween' }}
@@ -63,7 +66,8 @@ const ModalRegistration = ({ titleRegistration }) => {
 								color: '#573b8a',
 								fontSize: '2.3em',
 								marginTop: '30px',
-								textAlign: 'center'
+								textAlign: 'center',
+								mt: '100px'
 							}}
 						>
 							{titleRegistration}
@@ -78,25 +82,6 @@ const ModalRegistration = ({ titleRegistration }) => {
 							Icon={LockOpenIcon}
 							changeData={setPasswordValue}
 						></InputForm>
-						<InputForm
-							label='Token'
-							Icon={TokenIcon}
-							changeData={setTokenValue}
-						></InputForm>
-						<Button
-							variant='outlined'
-							type='submit'
-							sx={{
-								width: 350,
-								height: 40,
-								display: 'flex',
-								mr: 'auto',
-								ml: 'auto'
-							}}
-						>
-							Получить токен
-						</Button>
-
 						<Button
 							variant='outlined'
 							type='submit'
@@ -122,6 +107,5 @@ const ModalRegistration = ({ titleRegistration }) => {
 			</Box>
 		)
 	}
-
 }
 export default ModalRegistration

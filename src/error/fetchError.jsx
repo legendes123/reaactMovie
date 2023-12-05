@@ -3,10 +3,8 @@ import ClearIcon from '@mui/icons-material/Clear'
 import { Alert } from '@mui/lab'
 import { Backdrop, Box } from '@mui/material'
 
-
 const FetchError = () => {
-
-	return(
+	return (
 		<Backdrop open='open'>
 			<Box
 				sx={{
@@ -18,11 +16,9 @@ const FetchError = () => {
 					backgroundColor: '#9799a1'
 				}}
 			>
-				<ClearIcon
-					color='black'
-				></ClearIcon>
+				<ClearIcon color='black'></ClearIcon>
 				<h1>Oops!</h1>
-				<p>Sorry, an unexpected error has occurred.</p>
+				<p>The app only works with a VPN</p>
 				<Alert variant='outlined' severity='error'>
 					This is an error alert — check it out!
 				</Alert>
